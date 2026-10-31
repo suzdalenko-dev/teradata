@@ -52,10 +52,17 @@ Hoy también corre en la nube con Java, Python y APIs para Spark y AI.
 Resuelve el problema que no resuelve ninguna otra base de datos normal: consultar petabytes sin caerse.Una MySQL o Postgres explota con 10TB y 500 usuarios a la vez. 
 
 
-Esa es LA pregunta buena. ¿Qué coño pasaba en 1979 para que dos tíos digan "vamos a hacer una máquina de 1 billón de bytes"?En el 79 no había Big Data, había un problema más doloroso y real:El problema real de 1979-1984:Los bancos y aerolíneas se estaban ahogando. Wells Fargo, Citibank, American Airlines... Tenían mainframes IBM que guardaban transacciones perfecto (OLTP), pero si querías hacer una pregunta tipo "¿cuáles son mis 1000 clientes que más gastan y que viven en California?" el mainframe se moría. Tenía que leer cintas magnéticas toda la noche. Eso se llamaba DSS - Decision Support System - y no existía.IBM decía NO. IBM vendía mainframes carísimos y te decía "compra uno más grande". Su modelo era 1 ordenador gigante y centralizado. Si querías más potencia, pagabas 10M$ más.La idea de Shemer: Era físico, había trabajado en Caltech. Dijo: la ley de Moore va a hacer los microprocesadores Intel baratos. ¿Y si en lugar de 1 IBM gigante, pongo 1000 Intel 8086 baratos, cada uno con su disco, y los hago trabajar en paralelo? Reparto las filas por hash. Eso es el AMP.Por eso Teradata nació para resolver esto:
-MySQL/Postgres no existían. Había IMS y DB2 de IBM. Y reventaban con 10GB y 50 usuarios concurrentes haciendo analítica.Teradata resolvió: consultar terabytes sin caerse con 500 analistas a la vez. Eso en 1984 era ciencia ficción.Tu guion está muy bien, te lo puliría solo para RRHH así, más corto y con el problema al principio:GUION TERADATA - Versión portfolio
+Esa es LA pregunta buena. ¿Qué coño pasaba en 1979 para que dos tíos digan "vamos a hacer una máquina de 1 billón de bytes"?En el 79 no había Big Data, había un problema más doloroso y real:El problema real de 1979-1984:
+Los bancos y aerolíneas se estaban ahogando. Wells Fargo, Citibank, American Airlines... Tenían mainframes IBM que guardaban transacciones perfecto (OLTP), pero si querías hacer una pregunta tipo 
+"¿cuáles son mis 1000 clientes que más gastan y que viven en California?" el mainframe se moría. 
+Tenía que leer cintas magnéticas toda la noche. Eso se llamaba DSS - Decision Support System - y no existía.IBM decía NO. IBM vendía mainframes carísimos y te decía "compra uno más grande".
+ Su modelo era 1 ordenador gigante y centralizado. Si querías más potencia, pagabas 10M$ más.La idea de Shemer: Era físico, 
+ había trabajado en Caltech. Dijo: la ley de Moore va a hacer los microprocesadores Intel baratos. ¿Y si en lugar de 1 IBM gigante, pongo 1000 Intel 8086 baratos, cada uno con su disco, y los hago trabajar en paralelo? Reparto las filas por hash. Eso es el AMP.Por eso Teradata nació para resolver esto:
+MySQL/Postgres no existían. Había IMS y DB2 de IBM. Y reventaban con 10GB y 50 usuarios concurrentes haciendo analítica.Teradata resolvió: consultar terabytes sin caerse con
+ 500 analistas a la vez. Eso en 1984 era ciencia ficción.Tu guion está muy bien, te lo puliría solo para RRHH así, más corto y con el problema al principio:GUION TERADATA - Versión portfolio
 ¿Qué problema había en 1979? Los mainframes de IBM guardaban datos, pero no podían analizarlos. Un reporte tardaba toda la noche.
-¿Qué hizo Teradata? Fundada en 1979 por Jack Shemer (visión de negocio, "un trillón de bytes") y Philip Neches (ingeniero Caltech, creador del YNET). En 1984 sacan el DBC/1012: hasta 1024 Intel 8086 en paralelo, cada uno con su disco Winchester de 474MB, conectados por YNET.
+¿Qué hizo Teradata? Fundada en 1979 por Jack Shemer (visión de negocio, "un trillón de bytes") y Philip Neches (ingeniero Caltech, creador del YNET).
+ En 1984 sacan el DBC/1012: hasta 1024 Intel 8086 en paralelo, cada uno con su disco Winchester de 474MB, conectados por YNET.
 ¿Por qué es revolucionario? En vez de 1 mainframe gigante, 1000 pequeños en paralelo. Nace el Data Warehouse MPP. Primer cliente: Wells Fargo.
 Stack: Core en C/C++, interconexión BYNET, SQL ANSI.
 Hoy: 45 años después, sigue siendo el estándar para petabytes en bancos, telcos y retail. Ahora es Vantage en cloud.
@@ -109,4 +116,7 @@ Proyecto pequeño o mediano con presupuesto ajustado	    PostgreSQL
 
 
 
-Proyecto industrial completo para portfolio.
+2. Lo que es un Data Warehouse:
+Es otra base de datos aparte, hecha solo para analizar. No para trabajar, solo para responder preguntas de negocio.
+Le sacas datos a Libra cada noche, los limpias, les das consistencia (eso que hacías a mano) y los guardas ya ordenados en modelo estrella: una tabla de hechos (ventas, producción)
+ y tablas de dimensiones (cliente, producto, fecha, máquina).Ya no hay relaciones inventadas. Ya hay un modelo único que vale para todos los informes y Power BI.
