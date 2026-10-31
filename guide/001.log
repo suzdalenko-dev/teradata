@@ -1,0 +1,245 @@
+### TERADATA: LA HISTORIA DE CÓMO MIL ORDENADORES PEQUEÑOS DESAFIARON A LOS GRANDES MAINFRAMES
+
+Guion para vídeo — Teradata desde cero
+
+Imagina que estamos en 1979.
+
+Un banco internacional tiene millones de clientes. Cada día registra miles de operaciones: transferencias, pagos con tarjeta, retiradas de efectivo, préstamos y movimientos entre cuentas.
+
+Toda esa información se almacena en grandes ordenadores centrales, conocidos como mainframes. Son máquinas muy potentes y fiables. Llevan años procesando operaciones críticas para bancos, aerolíneas y grandes empresas.
+
+Pero aparece un problema.
+
+El banco no solo quiere guardar los movimientos. También quiere entenderlos.
+
+Quiere saber qué clientes gastan más, qué productos son más rentables, en qué regiones crecen las ventas o cómo han evolucionado las operaciones durante los últimos cinco años.
+
+Y ahí empieza la dificultad.
+
+Los sistemas que registran las operaciones diarias no siempre son los más adecuados para realizar análisis enormes. Una consulta que necesita leer y comparar millones de registros puede consumir muchos recursos, tardar horas y competir con las aplicaciones que el banco necesita para trabajar durante el día.
+
+El problema no era que los mainframes no pudieran analizar información. El problema era que hacer análisis a gran escala podía resultar costoso y afectar al rendimiento de los sistemas operativos.
+
+En aquella época todavía no se hablaba de Big Data como lo hacemos hoy. Pero las grandes organizaciones ya tenían un problema que nos resulta muy familiar: cada vez acumulaban más datos y necesitaban obtener respuestas cada vez más rápido.
+
+Y fue precisamente en ese contexto cuando nació Teradata.
+
+Dos perfiles y una idea ambiciosa
+
+En 1979, en California, se fundó Teradata.
+
+Entre las personas que impulsaron el proyecto destacaban dos nombres: Jack Evvard Shemer y Philip Malcolm Neches.
+
+No eran dos personas que simplemente quisieran crear otra empresa informática. Llegaban con experiencias diferentes, pero complementarias.
+
+Jack Shemer tenía una trayectoria relacionada con la informática empresarial, los sistemas compartidos y la tecnología bancaria. Había trabajado en entornos como General Electric y Xerox PARC, y también había participado en proyectos relacionados con Transaction Technology Inc.
+
+Conocía los problemas de las grandes organizaciones y tenía una visión empresarial: si las empresas necesitaban procesar cantidades enormes de información, había que construir una solución pensada específicamente para ese trabajo.
+
+Philip Neches aportaba una perspectiva más técnica. Tenía formación vinculada a Caltech y experiencia en el análisis de redes bancarias y sistemas de automatización financiera. Había trabajado también en Transaction Technology Inc., donde participó en proyectos relacionados con redes de cajeros automáticos.
+
+Podríamos decir que Shemer ayudaba a definir el problema y la oportunidad de negocio, mientras que Neches aportaba conocimientos de ingeniería para convertir aquella idea en una arquitectura informática real.
+
+Y aquí aparece la pregunta que cambiaría la historia de Teradata:
+
+¿Y si en lugar de utilizar un único ordenador gigantesco, pudiéramos conectar muchos procesadores más pequeños y hacer que trabajaran juntos?
+
+La idea que cambió la arquitectura
+
+Hasta entonces, el modelo dominante consistía en utilizar grandes sistemas centrales.
+
+Teradata apostó por una idea diferente: dividir el trabajo.
+
+En lugar de pedir a un único procesador que realizara toda una consulta, se podía repartir la información entre diferentes unidades de procesamiento. Cada una trabajaría con una parte de los datos y, al final, los resultados se combinarían.
+
+Esto es lo que conocemos como procesamiento masivamente paralelo, o MPP: Massively Parallel Processing.
+
+Pensemos en un ejemplo sencillo.
+
+Tenemos una tabla con mil millones de movimientos bancarios y queremos calcular cuánto dinero se ha gastado en cada región.
+
+En un sistema que trabaja de forma secuencial, una parte importante del trabajo puede recaer sobre un único procesador.
+
+En una arquitectura paralela, podemos distribuir los registros entre diferentes unidades. Cada una calcula los resultados de su parte y después se combinan.
+
+Es como repartir el trabajo entre muchos equipos en lugar de entregárselo todo a una sola persona.
+
+Pero para que esto funcione no basta con conectar muchos procesadores. Hay que decidir dónde se almacena cada registro, cómo se localiza y cómo se comunican las unidades.
+
+Y ahí estaba una de las claves de Teradata.
+
+1984: aparece el DBC/1012
+
+En 1984, Teradata presentó uno de sus productos históricos: el DBC/1012.
+
+Su nombre tenía un significado muy concreto:
+
+DBC significaba Database Computer, es decir, ordenador de bases de datos.
+
+1012 hacía referencia a 10 elevado a 12: un billón de bytes en la escala larga española, equivalente a un terabyte.
+
+Para entender lo impresionante que era aquella capacidad, tenemos que recordar que estamos hablando de los años ochenta.
+
+Hoy podemos llevar varios terabytes en un dispositivo externo relativamente pequeño. En aquella época, diseñar un sistema capaz de gestionar alrededor de un terabyte era una propuesta extraordinariamente ambiciosa.
+
+Y lo más interesante no era únicamente la capacidad de almacenamiento.
+
+Era cómo estaba construido el sistema.
+
+El DBC/1012 utilizaba múltiples unidades de procesamiento, microprocesadores Intel y almacenamiento distribuido. En las configuraciones de referencia se hablaba de hasta 1.024 unidades de procesamiento.
+
+No era un único ordenador gigantesco: era una arquitectura formada por muchas unidades que colaboraban entre sí.
+
+Los discos Winchester utilizados en aquella generación tenían una capacidad aproximada de 474 megabytes. Para los estándares actuales parece muy poco, pero entonces era una pieza importante de una máquina diseñada para trabajar con grandes volúmenes de información.
+
+¿Cómo funcionaba por dentro?
+
+Para entender la arquitectura original, tenemos que conocer tres conceptos: IFP, AMP y YNET.
+
+El IFP, o Interface Processor, era el procesador encargado de gestionar la comunicación con los sistemas externos, como el ordenador central de la empresa.
+
+El AMP, o Access Module Processor, era una de las unidades fundamentales del procesamiento paralelo. Cada AMP gestionaba una parte de los datos y ejecutaba operaciones sobre ellos.
+
+Y después estaba YNET, la red interna que permitía la comunicación entre los componentes del sistema.
+
+Es importante recordar que estamos hablando de la arquitectura histórica del DBC/1012. BYNET aparecería posteriormente como evolución de la tecnología de interconexión de Teradata.
+
+Pero ¿cómo sabía el sistema qué datos tenía que procesar cada AMP?
+
+Aquí entra en juego un concepto que sigue siendo fundamental para comprender Teradata: la distribución mediante hash.
+
+Imaginemos que tenemos una tabla de clientes y utilizamos el identificador del cliente como clave de distribución.
+
+El sistema aplica una función de hash a ese identificador y utiliza el resultado para determinar dónde se almacenará el registro.
+
+Así, los datos quedan repartidos entre diferentes unidades de procesamiento.
+
+Cuando ejecutamos una consulta, Teradata puede enviar el trabajo a las unidades que contienen los registros necesarios. Cada una procesa su parte y después se reúnen los resultados.
+
+Esto permite aprovechar el paralelismo.
+
+Por supuesto, distribuir los datos correctamente es fundamental. Si una unidad recibe mucho más trabajo que las demás, puede convertirse en un cuello de botella. A este problema lo llamamos skew, o desequilibrio en la distribución de datos.
+
+Es un concepto que estudiaremos más adelante, porque es una de las claves para trabajar bien con Teradata.
+
+¿Qué bases de datos existían en aquella época?
+
+Teradata no nació en un mundo sin bases de datos.
+
+Ya existían tecnologías importantes.
+
+IBM IMS, presentado en 1968, era uno de los grandes sistemas de gestión de información empresarial. Utilizaba una estructura jerárquica y se empleaba en entornos críticos, como banca, reservas y grandes operaciones empresariales.
+
+Durante los años setenta, IBM también desarrolló System R, un proyecto de investigación que contribuyó al desarrollo de las bases de datos relacionales y del lenguaje SQL.
+
+En 1979 apareció Oracle V2, una de las primeras implementaciones comerciales de bases de datos relacionales con SQL.
+
+Y posteriormente llegó IBM DB2, anunciado en 1983 y comercializado en 1985.
+
+Por tanto, la diferencia de Teradata no consistía en inventar las bases de datos ni el lenguaje SQL.
+
+Su gran apuesta era otra: diseñar una plataforma especializada para gestionar grandes cantidades de información mediante procesamiento paralelo.
+
+De una máquina paralela al concepto de Data Warehouse
+
+Ahora llegamos a una idea que resulta fundamental para cualquier profesional de datos: el Data Warehouse.
+
+Imaginemos una empresa industrial que tiene cinco fábricas.
+
+Cada fábrica genera información sobre producción, máquinas, paradas, consumos energéticos, calidad y mantenimiento.
+
+Los datos llegan desde diferentes sistemas y no siempre tienen la misma estructura.
+
+Una fábrica puede utilizar un sistema de gestión, otra puede tener un software diferente y las máquinas pueden enviar información mediante PLC, OPC UA o MQTT.
+
+Si cada departamento calcula sus indicadores de una manera distinta, la dirección puede terminar con varios informes que no coinciden.
+
+Por eso necesitamos algo más que almacenar datos.
+
+Necesitamos integrarlos, limpiarlos, organizarlos y construir una fuente de información coherente para el análisis.
+
+Ese es uno de los objetivos de un Data Warehouse.
+
+Normalmente, los datos se extraen de los sistemas de origen, se transforman para corregir errores y unificar criterios, y después se cargan en el almacén de datos.
+
+A este proceso lo conocemos como ETL: Extract, Transform, Load.
+
+Una vez organizados, podemos utilizar modelos dimensionales.
+
+Por ejemplo, una tabla de hechos puede almacenar las cantidades producidas, los tiempos de parada o el consumo energético.
+
+Y las tablas de dimensiones pueden describir la fábrica, la máquina, el producto y la fecha.
+
+De esta manera, podemos responder preguntas como:
+
+¿Cuánto ha producido cada fábrica durante el último trimestre?
+
+¿Qué máquinas tienen más paradas?
+
+¿Qué productos generan más defectos?
+
+¿Cómo ha evolucionado el consumo energético?
+
+Y podemos conectar esa información con herramientas de análisis como Power BI.
+
+La idea es que todos los departamentos trabajen con datos coherentes y definiciones comunes.
+
+¿Teradata es mejor que Oracle, SQL Server o PostgreSQL?
+
+No sería correcto decir que Teradata es siempre más rápido o que las demás bases de datos no pueden trabajar con grandes volúmenes.
+
+Oracle, SQL Server y PostgreSQL también ofrecen capacidades analíticas, optimización y mecanismos de procesamiento paralelo.
+
+La elección depende del tipo de aplicación, el volumen de información, la concurrencia, la infraestructura, el presupuesto y los requisitos de la empresa.
+
+Por ejemplo:
+
+Si estamos desarrollando una aplicación web para gestionar usuarios, pedidos y facturas, PostgreSQL, SQL Server u Oracle pueden ser opciones excelentes.
+
+Si trabajamos en un entorno empresarial basado en tecnologías Microsoft, SQL Server puede encajar especialmente bien.
+
+Si necesitamos una plataforma analítica distribuida para consultar grandes volúmenes de datos y atender cargas de trabajo complejas, Teradata puede ser una alternativa muy interesante.
+
+No se trata de que una tecnología sirva para todo. Se trata de elegir la arquitectura adecuada para cada problema.
+
+¿Qué pasó con Teradata después?
+
+La historia de Teradata tampoco terminó con el DBC/1012.
+
+En 1990, Teradata estableció una colaboración con NCR para desarrollar nuevas generaciones de sistemas de bases de datos.
+
+En 1991, NCR adquirió Teradata, dentro de una etapa de reorganización empresarial relacionada con AT&T.
+
+Durante los años siguientes, la tecnología continuó evolucionando y el almacenamiento de datos empresariales se convirtió en una parte cada vez más importante del negocio.
+
+En 2007, Teradata se separó de NCR y volvió a operar como una compañía independiente cotizada en bolsa.
+
+Con el paso del tiempo, la empresa dejó atrás la imagen de una máquina física especializada y evolucionó hacia plataformas de software y servicios analíticos.
+
+Hoy su tecnología incluye la familia Vantage y opciones de despliegue en la nube, como VantageCloud.
+
+En 2026, su presidente y director ejecutivo es Stephen McMillan.
+
+Y lo interesante es que, aunque han cambiado los procesadores, los discos, las redes y la infraestructura, una de las ideas originales sigue siendo relevante: distribuir el trabajo para poder analizar grandes cantidades de información.
+
+¿Por qué me interesa aprender Teradata?
+
+En mi caso, vengo del desarrollo de software industrial.
+
+He trabajado con aplicaciones que reciben datos de máquinas y sistemas de producción, integraciones mediante protocolos industriales, bases de datos, servicios backend y cuadros de mando.
+
+Por ejemplo, podemos recibir información de una línea de producción mediante PLC y OPC UA, procesarla con Python, almacenarla en una plataforma analítica y utilizar Power BI para visualizar indicadores como OEE, disponibilidad, rendimiento, calidad, paradas y consumo energético.
+
+Ahora quiero ampliar esa experiencia hacia el mundo de los Data Warehouses y las plataformas de datos empresariales.
+
+Y Teradata es una tecnología interesante para dar ese paso.
+
+Porque aprender Teradata no consiste solamente en aprender otro dialecto de SQL.
+
+Significa entender cómo se distribuyen los datos, cómo trabajan los AMP, qué ocurre cuando ejecutamos una consulta, cómo se optimizan los JOIN, cómo se gestionan los recursos y cómo se construyen procesos ETL fiables.
+
+Ese será precisamente el objetivo de esta serie: aprender Teradata desde cero, con ejemplos prácticos y construyendo poco a poco un proyecto de Data Warehouse industrial.
+
+Porque detrás de cada indicador de un cuadro de mando hay algo mucho más importante: una arquitectura capaz de convertir millones de registros en información útil para tomar decisiones.
+
+Y esa es, en esencia, la historia de Teradata.
