@@ -1,0 +1,112 @@
+Teradata.
+
+Guion corto, directo, para grabar o para documentación. 
+Estilo técnico pero que entienda RRHH si lo ve en tu portfolio:GUION - TERADATA. ¿Desde cuándo funciona?
+
+Teradata nace en 1979 en California, fundado por 
+Jack Evvard Shemer    (1940-2020) = el vaquero físico, el de Phoenix, Arizona. El de la idea de negocio "un billón de bytes".
+Philip Malcolm Neches (1952-2022) = el ingeniero de Caltech, el que sabía cómo construir esa máquina en paralelo. El técnico.
+
+En 1979, cuando se fundó Teradata, Jack E. Shemer tenía aproximadamente 38 años y Philip M. Neches tenía 27 años. 
+No eran dos empresarios que simplemente decidieron crear una empresa informática: ambos llegaban con experiencia e investigación relacionadas con los problemas de procesamiento de datos de grandes organizaciones.
+
+Jack Evvard Shemer
+General Electric (GE): comenzó a trabajar en el área de informática cuando tenía unos 19 años. Participó en el desarrollo y comercialización de sistemas de time-sharing: permitir que varios usuarios utilizaran simultáneamente un ordenador central.
+Xerox PARC: participó en la creación de un laboratorio de desarrollo avanzado.
+Citicorp / Transaction Technology Inc. (TTI): ocupó el puesto de vicepresidente de ingeniería de sistemas. Trabajó en sistemas bancarios y tecnologías relacionadas con la automatización de operaciones bancarias y los cajeros automáticos.
+
+Philip Malcolm Neches
+Antes de fundar Teradata trabajó en Transaction Technology Inc., donde dirigió análisis de redes bancarias de consumo, incluidos proyectos relacionados con grandes despliegues de cajeros automáticos.
+
+
+Desglose real de la novedad, según Wikipedia y Computer History Museum:Arquitectura: 
+Cada gabinete mide 60 pulgadas de alto (152cm) y pesa 450 libras (204kg) el de procesadores y 625 libras el de discos. 
+Dentro cabían hasta 8 unidades de microprocesador por gabinete.
+Con qué estaba construido: Múltiples microprocesadores Intel, cada uno con su propio disco duro dedicado, interconectados por la YNET.
+La novedad brutal: En vez de 1 mainframe IBM gigante, 
+Teradata metió hasta 1024 procesadores Intel conectados en paralelo por YNET. 
+Cada fila de tu tabla se distribuía por hash entre esos procesadores.
+Discos: Usaba Winchester de 474 megabytes con tiempo de búsqueda de 18ms y transferencia de 1.9 MB/s. 
+Hoy tu móvil es 1000 veces más grande.
+Componentes: IFP (Interface Processor) para conectarse al mainframe IBM, AMP (Access Module Processor) que era la unidad de paralelismo con microprocesador+disco+software. alchetron.comen.
+¿Por qué fue revolucionario? IBM decía "un ordenador grande hace todo". 
+Teradata dijo "1000 ordenadores baratos trabajando en paralelo hacen 10TB". 
+Y así nació el Data Warehouse moderno. 
+El DBC/1012 del 84 podía manejar 1 Terabyte, que entonces era una locura, 1 billón de caracteres
+
+Eran el dúo perfecto: Shemer ponía la visión cowboy de "vamos a hacerlo a lo grande" y Neches ponía la ingeniería de Caltech para que no explotara.
+Los dos ya fallecieron, con 2 años de diferencia. 
+Por eso ahora Teradata ya no es de fundadores, es 100% corporación en San Diego con Steve McMillan de CEO.
+
+
+La primera base de datos sale en 1984 y desde entonces es el estándar para Data Warehouse masivo. 
+No es una startup de moda, lleva 45 años donde hay datos críticos: bancos, telcos, retail.
+
+2. ¿En qué lenguaje está escrito?
+El core del motor está escrito en C y C++ para rendimiento y paralelismo. 
+
+Y por encima corre su propio lenguaje: Bynet (ahora BYNET) para la interconexión masiva de nodos, y por supuesto SQL 100% ANSI, su dialecto es Teradata SQL.
+Hoy también corre en la nube con Java, Python y APIs para Spark y AI.
+
+3. ¿Qué problema soluciona?
+Resuelve el problema que no resuelve ninguna otra base de datos normal: consultar petabytes sin caerse.Una MySQL o Postgres explota con 10TB y 500 usuarios a la vez. 
+
+
+Esa es LA pregunta buena. ¿Qué coño pasaba en 1979 para que dos tíos digan "vamos a hacer una máquina de 1 billón de bytes"?En el 79 no había Big Data, había un problema más doloroso y real:El problema real de 1979-1984:Los bancos y aerolíneas se estaban ahogando. Wells Fargo, Citibank, American Airlines... Tenían mainframes IBM que guardaban transacciones perfecto (OLTP), pero si querías hacer una pregunta tipo "¿cuáles son mis 1000 clientes que más gastan y que viven en California?" el mainframe se moría. Tenía que leer cintas magnéticas toda la noche. Eso se llamaba DSS - Decision Support System - y no existía.IBM decía NO. IBM vendía mainframes carísimos y te decía "compra uno más grande". Su modelo era 1 ordenador gigante y centralizado. Si querías más potencia, pagabas 10M$ más.La idea de Shemer: Era físico, había trabajado en Caltech. Dijo: la ley de Moore va a hacer los microprocesadores Intel baratos. ¿Y si en lugar de 1 IBM gigante, pongo 1000 Intel 8086 baratos, cada uno con su disco, y los hago trabajar en paralelo? Reparto las filas por hash. Eso es el AMP.Por eso Teradata nació para resolver esto:
+MySQL/Postgres no existían. Había IMS y DB2 de IBM. Y reventaban con 10GB y 50 usuarios concurrentes haciendo analítica.Teradata resolvió: consultar terabytes sin caerse con 500 analistas a la vez. Eso en 1984 era ciencia ficción.Tu guion está muy bien, te lo puliría solo para RRHH así, más corto y con el problema al principio:GUION TERADATA - Versión portfolio
+¿Qué problema había en 1979? Los mainframes de IBM guardaban datos, pero no podían analizarlos. Un reporte tardaba toda la noche.
+¿Qué hizo Teradata? Fundada en 1979 por Jack Shemer (visión de negocio, "un trillón de bytes") y Philip Neches (ingeniero Caltech, creador del YNET). En 1984 sacan el DBC/1012: hasta 1024 Intel 8086 en paralelo, cada uno con su disco Winchester de 474MB, conectados por YNET.
+¿Por qué es revolucionario? En vez de 1 mainframe gigante, 1000 pequeños en paralelo. Nace el Data Warehouse MPP. Primer cliente: Wells Fargo.
+Stack: Core en C/C++, interconexión BYNET, SQL ANSI.
+Hoy: 45 años después, sigue siendo el estándar para petabytes en bancos, telcos y retail. Ahora es Vantage en cloud.
+
+
+
+1. ¿Qué bases de datos existían entre 1970 y 1980?
+En aquella época ya existían sistemas de almacenamiento y gestión de datos bastante avanzados, pero eran muy diferentes de las bases de datos que utilizamos actualmente.
+2. ¿Qué utilizaban los bancos y las grandes empresas?
+Había varias tecnologías importantes:
+
+
+
+IBM IMS (1968)
+Una de las grandes bases de datos empresariales. Utilizaba una estructura jerárquica y era especialmente importante para procesar transacciones bancarias, reservas y operaciones empresariales.
+IBM System R (años 70)
+Un proyecto de investigación de IBM que desarrolló las bases de las bases de datos relacionales y contribuyó al nacimiento de SQL. Todavía no era un producto comercial.
+Oracle V2 (1979)
+La primera versión comercial de Oracle, una base de datos relacional que permitía trabajar con SQL.
+IBM DB2 (1983)
+Llegaría después de la fundación de Teradata. IBM anunció DB2 en 1983 y lanzó su primera versión para MVS en 1985.
+
+
+DBC/1012 fue el nombre del primer gran sistema comercial de Teradata, presentado en 1984. No era simplemente una base de datos: era una máquina especializada en almacenar y procesar enormes cantidades
+ de información mediante múltiples procesadores trabajando en paralelo.
+
+Su nombre se puede entender así:
+- DBC: Database Computer (ordenador de bases de datos).
+- 1012: hace referencia a \(10^{12}\), es decir, un billón en escala larga española (un trillion en inglés), o 1.000.000.000.000 bytes = 1 TB.
+
+¿Para qué se creó?
+Imagina un banco como Citibank en los años 80.
+
+Tenía información de millones de clientes:
+- Cuentas bancarias.
+- Movimientos y transferencias.
+- Tarjetas.
+- Cajeros automáticos.
+- Préstamos.
+- Operaciones comerciales.
+
+
+4. Entonces, ¿cuándo elegir cada uno?
+Necesidad empresarial	                                Elección habitual
+Aplicación web con usuarios, pedidos y facturación	    PostgreSQL / SQL Server / Oracle
+Sistema ERP empresarial	                                Oracle / SQL Server
+Aplicaciones .NET y ecosistema Microsoft	            SQL Server
+Data Warehouse con enormes volúmenes de datos	        Teradata / Oracle / SQL Server / PostgreSQL, según arquitectura
+Analítica empresarial distribuida a gran escala	        Teradata
+Proyecto pequeño o mediano con presupuesto ajustado	    PostgreSQL
+
+
+
+Proyecto industrial completo para portfolio.
