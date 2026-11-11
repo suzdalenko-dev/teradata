@@ -1,7 +1,9 @@
 # Teradata
 
-├── 00 Historia de Teradata (Contexto e historia) [https://youtu.be/8ZhzB_o9Jk4](https://youtu.be/8ZhzB_o9Jk4)
-├── 01-Arquitectura-MPP/
+00 Historia de Teradata (Contexto e historia) [https://youtu.be/8ZhzB_o9Jk4](https://youtu.be/8ZhzB_o9Jk4)
+
+01-Arquitectura-MPP
+
 ├── 02-AMP-BYNET-PE/
 ├── 03-Primary-Index/
 ├── 04-Hashing-Distribution/
